@@ -1,5 +1,5 @@
 import { Fragment, useContext } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { NavigationContainer, LogoContainer, NavLinks, NavLink } from './navigation.style.jsx';
 
 import CartIcon from '../../components/cart-icon/cart-icon';
@@ -11,7 +11,7 @@ import { signOutUser } from '../../utils/firebase/firebase';
 const Navigation = () => {
     const { currentUser } = useContext(UserContext);
     const { isCartOpen } = useContext(CartContext);
-    console.log(currentUser);
+
     return (
         <Fragment>
             <NavigationContainer>
