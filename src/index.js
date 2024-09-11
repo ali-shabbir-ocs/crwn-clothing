@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './store/store.js'
 import './index.css';
 import App from './App';
-import { UserProvider } from './contexts/usercontext';
+// import { UserProvider } from './contexts/usercontext';
 import reportWebVitals from './reportWebVitals';
 import { CategoriesProvider } from './contexts/categoriescontext.jsx';
 import { CartProvider } from './contexts/cartcontext.jsx';
@@ -12,15 +14,17 @@ import { CartProvider } from './contexts/cartcontext.jsx';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <UserProvider>
-        <CategoriesProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
-        </CategoriesProvider>
-      </UserProvider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        {/* <UserProvider> */}
+          <CategoriesProvider>
+            <CartProvider>
+              <App />
+            </CartProvider>
+          </CategoriesProvider>
+        {/* </UserProvider> */}
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 
