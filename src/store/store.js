@@ -20,12 +20,21 @@ import { configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import { rootReducer } from './root-reducer';
 
-// middleware are something like enhancers that run before an action hits the reducer
-const middleWares = [logger];
 
-// configureStore automatically applies middleware and Redux DevTools integration
+// Only include logger in development mode to reduce memory consumption
+const middleWares = [];
+
+if (process.env.NODE_ENV === 'development') {
+    middleWares.push(logger);
+}
+
 export const store = configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middleWares),
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            // Disable immutable state check for performance or debugging purposes
+            immutableCheck: false,  // This disables immutableStateInvariantMiddleware
+            serializableCheck: false, // Disables serializableStateInvariantMiddleware if needed
+        }).concat(middleWares),
 });
 

@@ -5,24 +5,14 @@ import { Provider } from 'react-redux';
 import { store } from './store/store.js'
 import './index.css';
 import App from './App';
-// import { UserProvider } from './contexts/usercontext';
 import reportWebVitals from './reportWebVitals';
-import { CategoriesProvider } from './contexts/categoriescontext.jsx';
-import { CartProvider } from './contexts/cartcontext.jsx';
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        {/* <UserProvider> */}
-          <CategoriesProvider>
-            <CartProvider>
-              <App />
-            </CartProvider>
-          </CategoriesProvider>
-        {/* </UserProvider> */}
+        <App />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
