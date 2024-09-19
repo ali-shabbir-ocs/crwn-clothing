@@ -21,9 +21,10 @@ import logger from 'redux-logger';
 import { rootReducer } from './root-reducer';
 import storage from 'redux-persist/lib/storage';
 import { persistStore, persistReducer } from 'redux-persist';
+import { thunk } from 'redux-thunk';
 
 // Only include logger in development mode to reduce memory consumption
-const middleWares = [];
+const middleWares = [thunk];
 
 if (process.env.NODE_ENV === 'development') {
     middleWares.push(logger);
