@@ -4,7 +4,9 @@ import { Fragment } from "react";
 import CategoryPreview from "../../components/category-preview/category-preview";
 import Spinner from "../../components/spinner/spinner";
 
-const CategoriesPreview = () => {
+
+
+const CategoriesPreview:React.FC = () => {
     const categoriesMap = useSelector(selectCategoriesMap);
     const isLoading = useSelector(selectCategoriesIsLoading);
     return (

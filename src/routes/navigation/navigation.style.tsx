@@ -24,6 +24,8 @@
 //     }
 //   }
 // }
+
+
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 export const NavigationContainer = styled.div`
@@ -48,7 +50,11 @@ export const NavLinks = styled.div`
     justify-content: flex-end;
 `
 
-export const NavLink = styled(Link)`
-padding: 10px 25px;
-      cursor: pointer;
-`
+
+// Allow NavLink to be used as Link or span
+export const NavLink = styled(Link).attrs((props) => ({
+  as: props.as || Link, // Default to Link if not provided
+}))`
+  padding: 10px 25px;
+  cursor: pointer;
+`;
